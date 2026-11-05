@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#244C3C">
+<title>Pet Care Companion — Everyday Care for Dogs & Cats</title>
+<meta name="description" content="Practical pet care guidance for dog and cat owners. Nutrition, food safety, breed insights, and everyday wellness — all in one free app.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF9F1;
+  --forest:#244C3C;
+  --forest-deep:#1A3729;
+  --sage:#A8BDA6;
+  --sage-soft:#E3EBDD;
+  --orange:#E89A55;
+  --orange-deep:#D4832F;
+  --orange-soft:#FCEEDF;
+  --white:#FFFFFF;
+  --ink:#1F2A24;
+  --muted:#5C6B62;
+  --line:#EBE3D7;
+  --shadow-sm:0 1px 3px rgba(31,42,36,.05),0 4px 14px rgba(31,42,36,.05);
+  --shadow-md:0 6px 24px rgba(31,42,36,.09);
+  --shadow-lg:0 20px 50px rgba(31,42,36,.14);
+  --r-sm:14px;
+  --r-md:20px;
+  --r-lg:28px;
+  --font-d:'Fraunces',Georgia,serif;
+  --font-b:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --hdr:64px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 16px);-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-b);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
+
+.container{
+  width:100%;
+  max-width:560px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ---------- Type ---------- */
+h1,h2,h3{font-family:var(--font-d);font-weight:700;line-height:1.12;color:var(--forest-deep);letter-spacing:-.02em}
+h1{font-size:clamp(2rem,7.5vw,2.6rem)}
+h2{font-size:clamp(1.6rem,6vw,2rem)}
+h3{font-size:1.25rem;font-weight:600}
+h4{font-family:var(--font-b);font-size:1rem;font-weight:600;color:var(--forest-deep);letter-spacing:0}
+
+.eyebrow{
+  display:inline-block;
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--orange-deep);margin-bottom:12px;
+}
+.lead{font-size:1rem;color:var(--muted);line-height:1.65;margin-top:12px}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--font-b);font-weight:600;font-size:1rem;
+  padding:17px 24px;border-radius:999px;line-height:1.1;
+  border:2px solid transparent;width:100%;
+  min-height:54px;
+  transition:transform .2s ease,background .2s,box-shadow .2s,border-color .2s;
+  -webkit-tap-highlight-color:transparent;
+  text-align:center;
+}
+.btn svg{width:17px;height:17px;flex-shrink:0}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--forest);color:#fff;box-shadow:0 6px 20px rgba(36,76,60,.24)}
+.btn-primary:hover,.btn-primary:active{background:var(--forest-deep)}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 6px 20px rgba(232,154,85,.32)}
+.btn-orange:hover,.btn-orange:active{background:var(--orange-deep)}
+.btn-ghost{background:transparent;color:var(--forest);border-color:var(--forest)}
+.btn-ghost:hover,.btn-ghost:active{background:var(--forest);color:#fff}
+.btn-white{background:#fff;color:var(--forest);box-shadow:var(--shadow-sm)}
+.btn-white:hover,.btn-white:active{background:var(--cream)}
+.btn-sm{min-height:44px;padding:12px 20px;font-size:.9rem;width:auto}
+
+/* ---------- Header ---------- */
+.hdr{
+  position:sticky;top:0;z-index:100;
+  height:var(--hdr);
+  background:rgba(255,249,241,.95);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s,box-shadow .25s;
+}
+.hdr.scrolled{border-bottom-color:var(--line);box-shadow:0 2px 14px rgba(31,42,36,.06)}
+.hdr-in{
+  display:flex;align-items:center;justify-content:space-between;
+  height:var(--hdr);gap:12px;
+}
+.brand{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.brand-mark{
+  width:36px;height:36px;border-radius:10px;background:var(--forest);
+  display:grid;place-items:center;color:#fff;flex-shrink:0;
+  box-shadow:0 4px 12px rgba(36,76,60,.22);
+}
+.brand-mark svg{width:20px;height:20px}
+.brand-name{font-family:var(--font-d);font-weight:700;font-size:1.05rem;color:var(--forest-deep);letter-spacing:-.02em;line-height:1.05}
+.brand-name span{display:block;font-family:var(--font-b);font-size:.55rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+
+.burger{
+  width:44px;height:44px;border-radius:10px;
+  display:grid;place-items:center;color:var(--forest);
+  transition:background .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.burger:active{background:var(--sage-soft)}
+.burger svg{width:22px;height:22px}
+
+.mnav{
+  display:none;position:fixed;top:var(--hdr);left:0;right:0;bottom:0;
+  z-index:99;
+  background:var(--cream);
+  padding:20px 20px 30px;
+  overflow-y:auto;
+  flex-direction:column;gap:2px;
+  animation:drop .22s ease;
+}
+.mnav.open{display:flex}
+.mnav a{
+  font-size:1.02rem;font-weight:500;padding:15px 18px;border-radius:12px;
+  color:var(--ink);transition:background .2s;
+  min-height:52px;display:flex;align-items:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.mnav a:active{background:var(--sage-soft)}
+.mnav .btn{margin-top:16px}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- Hero ---------- */
+.hero{padding:28px 0 56px}
+.hero-img-wrap{
+  position:relative;margin-bottom:28px;
+}
+.hero-img{
+  width:100%;
+  aspect-ratio:4/3.4;
+  object-fit:cover;
+  border-radius:var(--r-lg);
+  box-shadow:var(--shadow-lg);
+}
+.hero-badge{
+  position:absolute;bottom:-16px;left:16px;
+  background:#fff;border-radius:14px;padding:10px 14px;
+  box-shadow:var(--shadow-md);display:flex;align-items:center;gap:10px;
+  max-width:calc(100% - 32px);
+}
+.hero-badge-ic{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--orange-soft);display:grid;place-items:center;
+  color:var(--orange-deep);flex-shrink:0;
+}
+.hero-badge-ic svg{width:17px;height:17px}
+.hero-badge strong{display:block;font-size:.78rem;color:var(--forest-deep);line-height:1.2}
+.hero-badge span{font-size:.68rem;color:var(--muted)}
+
+.hero h1{margin-bottom:14px}
+.hero h1 .hl{color:var(--orange)}
+.hero .lead{margin-bottom:26px}
+.hero-actions{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+
+.hero-proof{
+  display:flex;flex-direction:column;gap:10px;
+  padding:20px 0 0;border-top:1px solid var(--line);
+}
+.proof{
+  display:flex;align-items:center;gap:10px;
+  font-size:.9rem;font-weight:500;color:var(--muted);
+}
+.proof svg{width:18px;height:18px;color:var(--forest);flex-shrink:0}
+
+/* ---------- Trust bar ---------- */
+.trustbar{
+  background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:16px 0;
+}
+.trustbar-in{display:flex;flex-direction:column;gap:10px}
+.tb{
+  display:flex;align-items:center;gap:9px;
+  font-size:.85rem;font-weight:500;color:var(--muted);
+}
+.tb svg{width:17px;height:17px;color:var(--sage);flex-shrink:0}
+
+/* ---------- Sections ---------- */
+.sec{padding:56px 0}
+.sec-alt{background:#fff}
+.sec-head{margin-bottom:28px}
+.sec-head h2{margin-bottom:10px}
+.sec-head p{font-size:.95rem;color:var(--muted);line-height:1.65}
+
+/* ---------- Feature cards ---------- */
+.feat-list{display:flex;flex-direction:column;gap:14px}
+.feat{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+  padding:22px 20px;
+  display:flex;gap:14px;align-items:flex-start;
+  transition:border-color .2s,box-shadow .2s;
+}
+.feat:active{border-color:var(--sage);box-shadow:var(--shadow-sm)}
+.feat-ic{
+  width:48px;height:48px;border-radius:14px;
+  background:var(--sage-soft);display:grid;place-items:center;
+  color:var(--forest);flex-shrink:0;
+}
+.feat-ic svg{width:23px;height:23px}
+.feat-ic.orange{background:var(--orange-soft);color:var(--orange-deep)}
+.feat-body h4{margin-bottom:4px}
+.feat-body p{font-size:.87rem;color:var(--muted);line-height:1.55}
+
+/* ---------- Pet cards ---------- */
+.pet-list{display:flex;flex-direction:column;gap:16px}
+.pet-card{
+  position:relative;border-radius:var(--r-md);overflow:hidden;
+  aspect-ratio:16/11;display:block;
+  box-shadow:var(--shadow-sm);
+  -webkit-tap-highlight-color:transparent;
+}
+.pet-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.pet-card:active img{transform:scale(1.03)}
+.pet-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,30,22,.85) 0%,rgba(15,30,22,.35) 50%,rgba(15,30,22,0) 85%);
+}
+.pet-card-body{position:absolute;left:0;right:0;bottom:0;padding:20px 20px 22px;z-index:2}
+.pet-card-tag{
+  display:inline-block;font-size:.65rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:4px 10px;border-radius:999px;margin-bottom:8px;
+  border:1px solid rgba(255,255,255,.25);
+}
+.pet-card h3{color:#fff;font-size:1.35rem;margin-bottom:4px}
+.pet-card p{color:rgba(255,255,255,.82);font-size:.84rem;line-height:1.45;max-width:280px}
+.pet-card-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  color:#fff;font-size:.82rem;font-weight:600;margin-top:10px;
+}
+.pet-card-cta svg{width:14px;height:14px}
+
+/* ---------- Dog / Cat care blocks ---------- */
+.care-block{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+  overflow:hidden;margin-bottom:16px;
+}
+.care-img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.care-body{padding:22px 20px 24px}
+.care-body h3{margin-bottom:14px;font-size:1.3rem}
+.care-sub{margin-bottom:16px}
+.care-sub:last-child{margin-bottom:0}
+.care-sub-label{
+  display:flex;align-items:center;gap:8px;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--orange-deep);
+  margin-bottom:8px;
+}
+.care-sub-label::before{
+  content:'';width:14px;height:2px;background:var(--orange);border-radius:2px;
+}
+.care-list{display:flex;flex-direction:column;gap:7px}
+.care-list li{
+  font-size:.88rem;color:var(--muted);line-height:1.5;
+  padding-left:16px;position:relative;
+}
+.care-list li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:5px;height:5px;border-radius:50%;background:var(--sage);
+}
+
+/* ---------- Breed horizontal scroll ---------- */
+.breed-scroll{
+  display:flex;gap:12px;overflow-x:auto;
+  padding:4px 20px 16px;
+  margin:0 -20px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.breed-scroll::-webkit-scrollbar{display:none}
+.breed-card{
+  flex:0 0 240px;scroll-snap-align:start;
+  background:#fff;border-radius:var(--r-md);overflow:hidden;
+  border:1px solid var(--line);
+  -webkit-tap-highlight-color:transparent;
+}
+.breed-card img{width:100%;height:150px;object-fit:cover}
+.breed-card-body{padding:16px 18px 18px}
+.breed-card-body h4{font-size:.98rem;margin-bottom:6px}
+.breed-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.breed-tag{
+  font-size:.66rem;font-weight:600;
+  padding:3px 9px;border-radius:999px;
+  background:var(--sage-soft);color:var(--forest);
+  letter-spacing:.02em;
+}
+.breed-tag.orange{background:var(--orange-soft);color:var(--orange-deep)}
+.breed-card-body p{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+/* ---------- Other pets grid (2 columns on mobile) ---------- */
+.pets-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+}
+.pet-mini{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:18px 14px;text-align:center;
+}
+.pet-mini-emoji{font-size:1.8rem;margin-bottom:6px;display:block;line-height:1}
+.pet-mini h4{font-size:.9rem;margin-bottom:4px}
+.pet-mini p{font-size:.76rem;color:var(--muted);line-height:1.45}
+
+/* ---------- Food safety tabs ---------- */
+.food-tabs{
+  display:flex;gap:8px;margin-bottom:20px;
+  padding:5px;background:#fff;border-radius:999px;
+  border:1px solid var(--line);
+}
+.food-tab{
+  flex:1;padding:11px 14px;border-radius:999px;
+  font-size:.9rem;font-weight:600;color:var(--muted);
+  transition:all .2s;min-height:44px;
+  -webkit-tap-highlight-color:transparent;
+}
+.food-tab.active{background:var(--forest);color:#fff}
+.food-tab:not(.active):active{background:var(--sage-soft)}
+
+.food-panel{display:none}
+.food-panel.active{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.food-col{
+  border-radius:var(--r-md);padding:22px 20px;
+  border:1px solid;margin-bottom:12px;
+}
+.food-col.green{background:#F2F8EF;border-color:#D4E6CE}
+.food-col.yellow{background:#FEF8EA;border-color:#F1DFB4}
+.food-col.red{background:#FCF1EE;border-color:#F0CFC7}
+.food-head{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:14px;padding-bottom:14px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.dot.g{background:#5B9E4D}.dot.y{background:#D4A843}.dot.r{background:#C84B3A}
+.food-head h4{font-size:.95rem;color:var(--forest-deep)}
+.food-head span{display:block;font-size:.7rem;color:var(--muted);font-weight:500;margin-top:1px}
+.food-col ul{display:flex;flex-direction:column;gap:8px}
+.food-col li{
+  font-size:.85rem;line-height:1.5;color:var(--ink);
+  padding-left:16px;position:relative;
+}
+.food-col li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.45;
+}
+.food-col li strong{color:var(--forest-deep)}
+.food-note{
+  margin-top:16px;font-size:.8rem;color:var(--muted);line-height:1.6;
+  background:var(--cream);border-left:3px solid var(--sage);
+  padding:14px 16px;border-radius:10px;
+}
+.food-note strong{color:var(--forest-deep)}
+
+/* ---------- Knowledge library ---------- */
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{
+  position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  width:19px;height:19px;color:var(--muted);pointer-events:none;
+}
+.search-box input{
+  width:100%;
+  padding:15px 16px 15px 46px;
+  border-radius:14px;
+  border:1.5px solid var(--line);
+  background:#fff;
+  font-family:var(--font-b);font-size:16px;
+  color:var(--ink);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  min-height:52px;
+  -webkit-appearance:none;
+}
+.search-box input::placeholder{color:#A0AAA4}
+.search-box input:focus{
+  border-color:var(--forest);
+  box-shadow:0 0 0 3px rgba(36,76,60,.1);
+}
+.filter-scroll{
+  display:flex;gap:8px;overflow-x:auto;
+  padding:2px 0 10px;
+  margin:0 -20px;padding-left:20px;padding-right:20px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.filter-scroll::-webkit-scrollbar{display:none}
+.filter-pill{
+  flex-shrink:0;padding:9px 16px;border-radius:999px;
+  font-size:.83rem;font-weight:600;
+  background:#fff;color:var(--muted);
+  border:1.5px solid var(--line);
+  transition:all .2s;min-height:38px;
+  -webkit-tap-highlight-color:transparent;
+}
+.filter-pill.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.filter-pill:not(.active):active{border-color:var(--sage)}
+
+.guide-list{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.guide-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:box-shadow .2s;
+}
+.guide-card:active{box-shadow:var(--shadow-sm)}
+.guide-card-img{width:100%;height:160px;object-fit:cover}
+.guide-card-body{padding:18px 20px 20px}
+.guide-card-cat{
+  font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--orange-deep);margin-bottom:6px;
+}
+.guide-card-body h4{font-size:1rem;line-height:1.35;margin-bottom:6px}
+.guide-card-body p{font-size:.83rem;color:var(--muted);line-height:1.55}
+
+.no-results{
+  text-align:center;padding:40px 20px;
+  color:var(--muted);font-size:.9rem;
+}
+.no-results strong{
+  display:block;font-size:1.05rem;
+  color:var(--forest-deep);margin-bottom:6px;
+}
+
+/* ---------- App features ---------- */
+.app-sec{
+  background:var(--forest);color:#fff;
+  position:relative;overflow:hidden;
+}
+.app-sec::before{
+  content:'';position:absolute;top:-30%;right:-20%;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(255,255,255,.04);pointer-events:none;
+}
+.app-sec .eyebrow{color:var(--orange)}
+.app-sec h2{color:#fff;margin-bottom:10px}
+.app-sec p{color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.65;margin-bottom:24px}
+
+.app-feat-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.app-feat{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+}
+.app-feat-ic{
+  width:34px;height:34px;border-radius:9px;
+  background:rgba(232,154,85,.2);
+  display:grid;place-items:center;color:var(--orange);flex-shrink:0;
+}
+.app-feat-ic svg{width:17px;height:17px}
+.app-feat span{
+  font-size:.85rem;font-weight:500;
+  color:rgba(255,255,255,.92);line-height:1.35;
+}
+
+/* ---------- Steps ---------- */
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+  padding:24px 22px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.step-num{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--forest);color:#fff;
+  display:grid;place-items:center;
+  font-family:var(--font-d);font-size:1.2rem;font-weight:700;
+  flex-shrink:0;
+  box-shadow:0 5px 14px rgba(36,76,60,.24);
+}
+.step-body h3{font-size:1.1rem;margin-bottom:6px}
+.step-body p{font-size:.88rem;color:var(--muted);line-height:1.6}
+
+/* ---------- Trust items ---------- */
+.trust-list{display:flex;flex-direction:column;gap:10px}
+.trust-item{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:18px 18px;
+}
+.trust-ic{
+  width:40px;height:40px;border-radius:11px;
+  background:var(--sage-soft);display:grid;place-items:center;
+  color:var(--forest);flex-shrink:0;
+}
+.trust-ic svg{width:19px;height:19px}
+.trust-item h4{font-size:.9rem;margin-bottom:3px}
+.trust-item p{font-size:.81rem;color:var(--muted);line-height:1.55}
+
+.disclaimer{
+  margin-top:20px;
+  background:var(--orange-soft);border:1px solid #F3DDC6;
+  border-radius:var(--r-sm);padding:18px 20px;
+}
+.disclaimer svg{
+  width:22px;height:22px;color:var(--orange-deep);
+  margin-bottom:8px;
+}
+.disclaimer p{font-size:.82rem;line-height:1.65;color:var(--ink)}
+.disclaimer strong{color:var(--forest-deep)}
+
+/* ---------- Final CTA ---------- */
+.final{
+  position:relative;padding:72px 0;overflow:hidden;
+  background:var(--forest-deep);text-align:center;
+}
+.final-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;opacity:.22;
+}
+.final::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(26,55,41,.55),rgba(26,55,41,.88));
+}
+.final-in{position:relative;z-index:2;padding:0 20px}
+.final h2{color:#fff;margin-bottom:14px;font-size:clamp(1.7rem,6vw,2.3rem)}
+.final p{color:rgba(255,255,255,.82);font-size:.95rem;line-height:1.65;margin-bottom:26px;max-width:400px;margin-left:auto;margin-right:auto}
+.final .micro{font-size:.76rem;color:rgba(255,255,255,.55);margin-top:16px;margin-bottom:0}
+
+/* ---------- Footer ---------- */
+.ftr{background:#152A20;color:rgba(255,255,255,.68);padding:44px 0 0;font-size:.88rem}
+.ftr-brand{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.ftr-brand .brand-mark{background:rgba(255,255,255,.1);box-shadow:none}
+.ftr-brand .brand-name{color:#fff}
+.ftr-brand .brand-name span{color:rgba(255,255,255,.45)}
+.ftr-brand-p{font-size:.83rem;line-height:1.65;color:rgba(255,255,255,.5);margin-bottom:28px}
+
+.ftr-links{
+  display:grid;grid-template-columns:1fr 1fr;gap:22px;
+  padding-bottom:28px;margin-bottom:24px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.ftr-col h5{
+  font-family:var(--font-b);font-size:.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  color:#fff;margin-bottom:12px;
+}
+.ftr-col ul{display:flex;flex-direction:column;gap:9px}
+.ftr-col a{
+  font-size:.83rem;color:rgba(255,255,255,.58);
+  transition:color .2s;
+  padding:3px 0;
+  -webkit-tap-highlight-color:transparent;
+}
+.ftr-col a:active{color:var(--orange)}
+
+.ftr-disc{
+  font-size:.74rem;line-height:1.65;
+  color:rgba(255,255,255,.32);
+  padding:0 0 22px;
+}
+.ftr-disc strong{color:rgba(255,255,255,.55)}
+
+.ftr-bottom{
+  display:flex;flex-direction:column;gap:6px;
+  padding:18px 0 26px;
+  font-size:.75rem;color:rgba(255,255,255,.38);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ---------- Focus ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:2px solid var(--orange);outline-offset:2px;border-radius:6px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="container hdr-in">
+    <a href="#" class="brand" aria-label="Pet Care Companion home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="7" cy="7" r="2.1"/><circle cx="17" cy="7" r="2.1"/>
+          <circle cx="5" cy="13" r="1.7"/><circle cx="19" cy="13" r="1.7"/>
+          <path d="M12 20c-3.4 0-6-2.2-6-5 0-2 1.8-3.5 4-3.5 1 0 1.5.3 2 .7.5-.4 1-.7 2-.7 2.2 0 4 1.5 4 3.5 0 2.8-2.6 5-6 5z"/>
+        </svg>
+      </span>
+      <span class="brand-name">Pet Care Companion<span>Everyday wellness</span></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<nav class="mnav" id="mnav" aria-label="Mobile navigation">
+  <a href="#dog-care">Dog Care</a>
+  <a href="#cat-care">Cat Care</a>
+  <a href="#nutrition">Pet Nutrition</a>
+  <a href="#food">Food Safety</a>
+  <a href="#guides">Pet Guides</a>
+  <a href="#app">Free App</a>
+  <a href="#trust">Trust &amp; Safety</a>
+  <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Free App</a>
+</nav>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-img-wrap">
+      <img class="hero-img"
+        src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80"
+        alt="A happy golden retriever and a cat sitting together outdoors"
+        width="800" height="680" fetchpriority="high">
+      <div class="hero-badge" aria-hidden="true">
+        <span class="hero-badge-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        </span>
+        <div>
+          <strong>Personalized care</strong>
+          <span>For every life stage</span>
+        </div>
+      </div>
+    </div>
+
+    <h1>Everything your pet needs to live a <span class="hl">happier, healthier</span> life.</h1>
+    <p class="lead">From choosing the right food to understanding your pet's behavior, discover practical, easy-to-follow guidance for every stage of your pet's life.</p>
+
+    <div class="hero-actions" style="margin-top:24px">
+      <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        Get Your Free Pet Care App
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#guides" class="btn btn-ghost">Explore Pet Care Guides</a>
+    </div>
+
+    <div class="hero-proof">
+      <span class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Free Pet Care Resources</span>
+      <span class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Dog &amp; Cat Care Guides</span>
+      <span class="proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Everyday Pet Wellness Tips</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<div class="trustbar">
+  <div class="container trustbar-in">
+    <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Educational &amp; practical</span>
+    <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Dog and cat focused</span>
+    <span class="tb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Everyday wellness</span>
+  </div>
+</div>
+
+<!-- ============ DOG CARE ============ -->
+<section class="sec" id="dog-care">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Dog Care Center</span>
+      <h2>Practical guidance for every tail wag.</h2>
+      <p>From nutrition and breed needs to training and hygiene — clear information to help your dog thrive at every stage.</p>
+    </div>
+
+    <div class="care-block reveal">
+      <img class="care-img"
+        src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80"
+        alt="Happy golden retriever dog"
+        width="800" height="500" loading="lazy">
+      <div class="care-body">
+        <h3>Dog Nutrition</h3>
+        <div class="care-sub">
+          <div class="care-sub-label">Best foods &amp; feeding</div>
+          <ul class="care-list">
+            <li>Balanced adult, puppy, and senior diets</li>
+            <li>Safe fruits and vegetables</li>
+            <li>Portion sizes and feeding schedules</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Avoid entirely</div>
+          <ul class="care-list">
+            <li>Chocolate, grapes, raisins, xylitol</li>
+            <li>Onions, garlic, macadamia nuts</li>
+            <li>Foods that upset digestion</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Hydration</div>
+          <ul class="care-list">
+            <li>Fresh water at all times</li>
+            <li>Clean bowls daily</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="care-block reveal">
+      <div class="care-body">
+        <h3>Dog Training &amp; Behavior</h3>
+        <div class="care-sub">
+          <div class="care-sub-label">Training basics</div>
+          <ul class="care-list">
+            <li>Puppy training and potty training</li>
+            <li>Leash training and basic commands</li>
+            <li>Socialization strategies</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Common concerns</div>
+          <ul class="care-list">
+            <li>Separation anxiety and excessive barking</li>
+            <li>Aggressive behavior warning signs</li>
+            <li>When to seek professional help</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="care-block reveal">
+      <div class="care-body">
+        <h3>Dog Health &amp; Hygiene</h3>
+        <div class="care-sub">
+          <div class="care-sub-label">Everyday care</div>
+          <ul class="care-list">
+            <li>Bathing schedules and dental care</li>
+            <li>Ear cleaning and nail trimming</li>
+            <li>Flea and tick prevention</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Veterinary guidance</div>
+          <ul class="care-list">
+            <li>Vaccination schedules</li>
+            <li>Routine checkup recommendations</li>
+            <li>Warning signs that need a vet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Breed scroll -->
+  <div class="container" style="margin-top:24px">
+    <div class="sec-head reveal" style="margin-bottom:16px">
+      <h3>Popular US dog breeds</h3>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:6px">Swipe to explore temperament, exercise, and care needs.</p>
+    </div>
+  </div>
+  <div class="breed-scroll" role="list">
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=480&q=80" alt="Golden Retriever" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Golden Retriever</h4>
+        <div class="breed-tags"><span class="breed-tag">Friendly</span><span class="breed-tag orange">High energy</span></div>
+        <p>Gentle and trainable. Needs daily exercise, regular grooming, and joint health monitoring.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1579213838058-1d3a64e1a10e?auto=format&fit=crop&w=480&q=80" alt="Labrador Retriever" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Labrador Retriever</h4>
+        <div class="breed-tags"><span class="breed-tag">Outgoing</span><span class="breed-tag orange">Active</span></div>
+        <p>Friendly family dog. Loves activity and food — portion control matters.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&w=480&q=80" alt="German Shepherd" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>German Shepherd</h4>
+        <div class="breed-tags"><span class="breed-tag">Loyal</span><span class="breed-tag orange">Working breed</span></div>
+        <p>Intelligent and protective. Needs mental stimulation and consistent training.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=480&q=80" alt="French Bulldog" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>French Bulldog</h4>
+        <div class="breed-tags"><span class="breed-tag">Adaptable</span><span class="breed-tag orange">Low exercise</span></div>
+        <p>Charming and compact. Brachycephalic — careful with heat and exercise.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=480&q=80" alt="Poodle" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Poodle</h4>
+        <div class="breed-tags"><span class="breed-tag">Smart</span><span class="breed-tag orange">Grooming</span></div>
+        <p>Highly trainable and affectionate. Coat requires professional grooming.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=480&q=80" alt="Beagle" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Beagle</h4>
+        <div class="breed-tags"><span class="breed-tag">Curious</span><span class="breed-tag orange">Scent-driven</span></div>
+        <p>Merry and sturdy. Secure fence essential — their nose leads them.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CTA after dog care -->
+<section style="padding:8px 0 56px;background:var(--cream)">
+  <div class="container">
+    <div class="reveal" style="background:var(--orange);color:#fff;border-radius:var(--r-lg);padding:32px 24px;text-align:center">
+      <h2 style="color:#fff;font-size:1.5rem;margin-bottom:8px">Start Caring Smarter</h2>
+      <p style="color:rgba(255,255,255,.88);font-size:.92rem;line-height:1.55;margin-bottom:20px">Get free, practical dog care guidance in one convenient app.</p>
+      <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-white">Download Free Pet Care App</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAT CARE ============ -->
+<section class="sec sec-alt" id="cat-care">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cat Care Center</span>
+      <h2>Thoughtful care for independent spirits.</h2>
+      <p>Cats have unique nutritional, behavioral, and environmental needs. Explore breed profiles, feeding guidance, and practical wellness.</p>
+    </div>
+
+    <div class="care-block reveal">
+      <img class="care-img"
+        src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80"
+        alt="Relaxed cat portrait"
+        width="800" height="500" loading="lazy">
+      <div class="care-body">
+        <h3>Cat Nutrition</h3>
+        <div class="care-sub">
+          <div class="care-sub-label">Best foods &amp; feeding</div>
+          <ul class="care-list">
+            <li>Complete and balanced cat food</li>
+            <li>Wet vs. dry food considerations</li>
+            <li>Kitten, adult, and senior feeding</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Avoid entirely</div>
+          <ul class="care-list">
+            <li>Onions, garlic, chocolate, alcohol</li>
+            <li>Grapes, raisins, xylitol, caffeine</li>
+            <li>Raw fish and dog food</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Hydration</div>
+          <ul class="care-list">
+            <li>Fresh water daily</li>
+            <li>Wet food helps increase water intake</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="care-block reveal">
+      <div class="care-body">
+        <h3>Cat Behavior &amp; Enrichment</h3>
+        <div class="care-sub">
+          <div class="care-sub-label">Behavior</div>
+          <ul class="care-list">
+            <li>Litter box training</li>
+            <li>Scratching and meowing</li>
+            <li>Body language and stress signals</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Social &amp; indoor</div>
+          <ul class="care-list">
+            <li>Introducing a new cat</li>
+            <li>Indoor enrichment ideas</li>
+            <li>Socialization and play</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="care-block reveal">
+      <div class="care-body">
+        <h3>Cat Health &amp; Hygiene</h3>
+        <div class="care-sub">
+          <div class="care-sub-label">Everyday care</div>
+          <ul class="care-list">
+            <li>Dental hygiene and coat care</li>
+            <li>Nail trimming and ear care</li>
+            <li>Parasite prevention</li>
+          </ul>
+        </div>
+        <div class="care-sub">
+          <div class="care-sub-label">Veterinary guidance</div>
+          <ul class="care-list">
+            <li>Vaccination guidance</li>
+            <li>Common illness warning signs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="margin-top:24px">
+    <div class="sec-head reveal" style="margin-bottom:16px">
+      <h3>Popular cat breeds</h3>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:6px">Swipe to explore personality, grooming, and health notes.</p>
+    </div>
+  </div>
+  <div class="breed-scroll" role="list">
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=480&q=80" alt="Persian cat" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Persian</h4>
+        <div class="breed-tags"><span class="breed-tag">Calm</span><span class="breed-tag orange">Daily grooming</span></div>
+        <p>Serene and sweet. Long coat requires daily brushing. Prefers a quiet home.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=480&q=80" alt="Maine Coon cat" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Maine Coon</h4>
+        <div class="breed-tags"><span class="breed-tag">Gentle giant</span><span class="breed-tag orange">Affectionate</span></div>
+        <p>Large, friendly, and playful. Needs space and regular grooming.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&w=480&q=80" alt="Siamese cat" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Siamese</h4>
+        <div class="breed-tags"><span class="breed-tag">Vocal</span><span class="breed-tag orange">Social</span></div>
+        <p>Chatty and people-oriented. Needs interactive play and companionship.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=480&q=80" alt="Ragdoll cat" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Ragdoll</h4>
+        <div class="breed-tags"><span class="breed-tag">Docile</span><span class="breed-tag orange">Loves people</span></div>
+        <p>Relaxed and affectionate. Semi-long coat needs regular brushing.</p>
+      </div>
+    </article>
+    <article class="breed-card" role="listitem">
+      <img src="https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?auto=format&fit=crop&w=480&q=80" alt="Bengal cat" width="480" height="300" loading="lazy">
+      <div class="breed-card-body">
+        <h4>Bengal</h4>
+        <div class="breed-tags"><span class="breed-tag">Energetic</span><span class="breed-tag orange">Intelligent</span></div>
+        <p>Highly active and curious. Needs climbing space and daily play.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CTA after cat care -->
+<section style="padding:8px 0 56px;background:var(--cream)">
+  <div class="container">
+    <div class="reveal" style="background:var(--forest);color:#fff;border-radius:var(--r-lg);padding:32px 24px;text-align:center">
+      <h2 style="color:#fff;font-size:1.5rem;margin-bottom:8px">Get Your Free Pet Companion</h2>
+      <p style="color:rgba(255,255,255,.78);font-size:.92rem;line-height:1.55;margin-bottom:20px">Explore cat care guidance, breed insights, and everyday wellness tips.</p>
+      <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-orange">Give Your Pet Better Care</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER PETS ============ -->
+<section class="sec sec-alt" id="other-pets">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Beyond Dogs &amp; Cats</span>
+      <h2>Care guides for other companions.</h2>
+      <p>Rabbits, small mammals, birds, fish, and reptiles each have distinct needs. Explore species-appropriate basics.</p>
+    </div>
+
+    <div class="pets-grid reveal">
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🐰</span>
+        <h4>Rabbits</h4>
+        <p>Hay-based diet, safe housing, daily exercise. Prey animals hide illness.</p>
+      </div>
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🐹</span>
+        <h4>Hamsters</h4>
+        <p>Large continuous floor space, dust-free bedding, pelleted diet.</p>
+      </div>
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🐷</span>
+        <h4>Guinea Pigs</h4>
+        <p>Daily vitamin C, unlimited hay, and plenty of floor space.</p>
+      </div>
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🦜</span>
+        <h4>Parrots</h4>
+        <p>Formulated pellets, fresh veggies, social interaction, large cage.</p>
+      </div>
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🐠</span>
+        <h4>Fish</h4>
+        <p>Cycle the tank first. Larger tanks are more stable. Regular water tests.</p>
+      </div>
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🐢</span>
+        <h4>Turtles</h4>
+        <p>Basking area, UVB light, 10 gallons per inch of shell. Wash hands.</p>
+      </div>
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🦎</span>
+        <h4>Reptiles</h4>
+        <p>Species-specific heat, UVB, and humidity. Research before adopting.</p>
+      </div>
+      <div class="pet-mini">
+        <span class="pet-mini-emoji" aria-hidden="true">🐦</span>
+        <h4>Small Birds</h4>
+        <p>Varied perches, social contact, fresh vegetables and pellets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOD SAFETY ============ -->
+<section class="sec" id="food">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Pet Food Safety</span>
+      <h2>Know what's safe, what's risky, what's off-limits.</h2>
+      <p>A quick-reference guide to common foods. Always introduce new foods gradually and consult your vet if unsure.</p>
+    </div>
+
+    <div class="food-tabs reveal" role="tablist" aria-label="Food safety by animal">
+      <button class="food-tab active" role="tab" aria-selected="true" aria-controls="panel-dog" id="tab-dog" data-panel="panel-dog">For Dogs</button>
+      <button class="food-tab" role="tab" aria-selected="false" aria-controls="panel-cat" id="tab-cat" data-panel="panel-cat">For Cats</button>
+    </div>
+
+    <!-- Dog panel -->
+    <div class="food-panel active" id="panel-dog" role="tabpanel" aria-labelledby="tab-dog">
+      <div class="food-col green">
+        <div class="food-head"><span class="dot g"></span><div><h4>Generally Safe</h4><span>Plainly prepared, in moderation</span></div></div>
+        <ul>
+          <li>Plain cooked chicken (no bones or seasoning)</li>
+          <li>Carrots, cut into safe pieces</li>
+          <li>Blueberries (a few at a time)</li>
+          <li>Plain cooked pumpkin</li>
+          <li>Apple slices (no seeds or core)</li>
+        </ul>
+      </div>
+      <div class="food-col yellow">
+        <div class="food-head"><span class="dot y"></span><div><h4>Use Caution</h4><span>Small amounts, vet guidance</span></div></div>
+        <ul>
+          <li>Cheese and dairy (lactose sensitivity)</li>
+          <li>Peanut butter (check for xylitol)</li>
+          <li>Cooked eggs (some dogs sensitive)</li>
+          <li>Cooked boneless salmon</li>
+          <li>Bananas (high sugar, occasional)</li>
+        </ul>
+      </div>
+      <div class="food-col red">
+        <div class="food-head"><span class="dot r"></span><div><h4>Dangerous or Toxic</h4><span>Do not feed</span></div></div>
+        <ul>
+          <li><strong>Chocolate</strong> — theobromine toxicity</li>
+          <li><strong>Grapes &amp; raisins</strong> — kidney failure risk</li>
+          <li><strong>Xylitol</strong> — liver failure, hypoglycemia</li>
+          <li><strong>Onions, garlic, chives</strong> — damage red blood cells</li>
+          <li><strong>Macadamia nuts, alcohol, yeast dough</strong></li>
+        </ul>
+      </div>
+      <p class="food-note">⚠️ <strong>Note:</strong> Not a complete list. Even "safe" foods should be plain, unseasoned, and given in moderation. If you suspect poisoning, contact your vet or the ASPCA Poison Control Center at (888) 426-4435.</p>
+    </div>
+
+    <!-- Cat panel -->
+    <div class="food-panel" id="panel-cat" role="tabpanel" aria-labelledby="tab-cat">
+      <div class="food-col green">
+        <div class="food-head"><span class="dot g"></span><div><h4>Appropriate</h4><span>Complete and balanced</span></div></div>
+        <ul>
+          <li>Complete and balanced cat food (wet or dry)</li>
+          <li>Plain cooked chicken, small portions</li>
+          <li>Plain cooked turkey, boneless</li>
+          <li>Commercial cat-formulated treats</li>
+        </ul>
+      </div>
+      <div class="food-col yellow">
+        <div class="food-head"><span class="dot y"></span><div><h4>Use Caution</h4><span>Occasional, small amounts</span></div></div>
+        <ul>
+          <li>Cheese (most cats are lactose intolerant)</li>
+          <li>Cooked eggs (occasional)</li>
+          <li>Lean cooked beef, small amounts</li>
+          <li>Plain cooked pumpkin</li>
+        </ul>
+      </div>
+      <div class="food-col red">
+        <div class="food-head"><span class="dot r"></span><div><h4>Dangerous or Toxic</h4><span>Do not feed</span></div></div>
+        <ul>
+          <li><strong>Onions, garlic, chives</strong> — damage red blood cells</li>
+          <li><strong>Chocolate, alcohol, caffeine</strong></li>
+          <li><strong>Grapes &amp; raisins, xylitol</strong></li>
+          <li><strong>Raw fish</strong> — parasites, thiamine loss</li>
+          <li><strong>Dog food</strong> — not feline-formulated</li>
+        </ul>
+      </div>
+      <p class="food-note">⚠️ <strong>Note:</strong> Not a complete list. If you suspect poisoning, contact your vet or the ASPCA Poison Control Center at (888) 426-4435.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA after food -->
+<section style="padding:8px 0 56px;background:var(--cream)">
+  <div class="container">
+    <div class="reveal" style="background:var(--forest);color:#fff;border-radius:var(--r-lg);padding:32px 24px;text-align:center">
+      <h2 style="color:#fff;font-size:1.5rem;margin-bottom:8px">Get Started for Free</h2>
+      <p style="color:rgba(255,255,255,.78);font-size:.92rem;line-height:1.55;margin-bottom:20px">Food safety guidance, breed information, and everyday care tips — all in one app.</p>
+      <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-orange">Download Free Pet Care App</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KNOWLEDGE LIBRARY ============ -->
+<section class="sec sec-alt" id="guides">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Pet Care Library</span>
+      <h2>Find the answer you need.</h2>
+      <p>Practical guides on nutrition, new pet care, grooming, stress, and essential checklists.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="guideSearch" placeholder="Search guides..." aria-label="Search pet care guides">
+      </div>
+      <div class="filter-scroll" id="filterPills" role="group" aria-label="Filter guides">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="dog">Dog</button>
+        <button class="filter-pill" data-filter="cat">Cat</button>
+        <button class="filter-pill" data-filter="nutrition">Nutrition</button>
+        <button class="filter-pill" data-filter="puppy-kitten">Puppy &amp; Kitten</button>
+        <button class="filter-pill" data-filter="wellness">Wellness</button>
+      </div>
+    </div>
+
+    <div class="guide-list" id="libraryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ APP FEATURES ============ -->
+<section class="sec app-sec" id="app">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Our Free Pet Care App</span>
+      <h2>Better pet care starts with the right knowledge.</h2>
+      <p>Register your pet using its name after installing the app and explore helpful information designed to make everyday care easier.</p>
+
+      <div class="app-feat-list">
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/></svg></div>
+          <span>Personalized Pet Care Tips</span>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
+          <span>Food Safety Guidance</span>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <span>Breed-Specific Information</span>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <span>Daily Pet Wellness Advice</span>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+          <span>Feeding &amp; Nutrition Guidance</span>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <span>Dog &amp; Cat Care Resources</span>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <span>Training &amp; Behavior Tips</span>
+        </div>
+        <div class="app-feat">
+          <div class="app-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <span>Helpful Info for Every Life Stage</span>
+        </div>
+      </div>
+
+      <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-orange">Download Your Free Pet Care App</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA after app features -->
+<section style="padding:56px 0;background:var(--cream)">
+  <div class="container">
+    <div class="reveal" style="background:var(--orange);color:#fff;border-radius:var(--r-lg);padding:32px 24px;text-align:center">
+      <h2 style="color:#fff;font-size:1.5rem;margin-bottom:8px">Give Your Pet Better Care</h2>
+      <p style="color:rgba(255,255,255,.88);font-size:.92rem;line-height:1.55;margin-bottom:20px">Register your pet after installation and start exploring practical guidance.</p>
+      <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-white">Download Free Pet Care App</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec sec-alt" id="how">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Three simple steps.</h2>
+      <p>Get started in minutes. No complicated setup.</p>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Download the Free App</h3>
+          <p>Get started by installing our free pet care app. Simple, helpful, and easy to use.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Register Your Pet</h3>
+          <p>After installation, register your pet using its name and the available pet information.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Discover Better Care</h3>
+          <p>Explore practical tips, guidance, and resources that make everyday pet care easier.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:24px">
+      <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Started — It's Free</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="sec" id="trust">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Trust &amp; Safety</span>
+      <h2>Your pet's wellbeing comes first.</h2>
+      <p>We believe in responsible, educational information that supports — never replaces — professional veterinary guidance.</p>
+    </div>
+
+    <div class="trust-list reveal">
+      <div class="trust-item">
+        <div class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><h4>Educational Resources</h4><p>Clear, practical information to support informed everyday decisions.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><h4>Easy to Understand</h4><p>No jargon. No confusion. Guidance you can actually use.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/></svg></div>
+        <div><h4>Responsible Ownership</h4><p>Thoughtful, informed care that prioritizes long-term wellbeing.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><h4>Everyday Practicality</h4><p>Focused on the real questions pet owners face every day.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div><h4>Dog &amp; Cat Focused</h4><p>Deep coverage of the two most common companion animals.</p></div>
+      </div>
+    </div>
+
+    <div class="disclaimer reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p><strong>Important Disclaimer:</strong> Pet care information on this platform is for educational purposes only and is not a substitute for professional veterinary diagnosis, treatment, or advice. Contact a qualified veterinarian for medical concerns or emergencies. If you suspect your pet has ingested a toxic substance, call your vet, the ASPCA Poison Control Center at (888) 426-4435, or the Pet Poison Helpline at (855) 764-7661.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <img class="final-img"
+    src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=900&q=80"
+    alt="" aria-hidden="true" width="900" height="700" loading="lazy">
+  <div class="final-in reveal">
+    <h2>Because your pet deserves the best care.</h2>
+    <p>Make everyday pet care easier with helpful knowledge, practical guidance, and resources designed for responsible pet owners.</p>
+    <a href="https://trckapp.org/cl/i/n6egqk" target="_blank" rel="noopener noreferrer" class="btn btn-orange">Download Your Free Pet Care App</a>
+    <p class="micro">Free to get started • Simple pet registration • Helpful everyday guidance</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="container">
+    <div class="ftr-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="7" cy="7" r="2.1"/><circle cx="17" cy="7" r="2.1"/>
+          <circle cx="5" cy="13" r="1.7"/><circle cx="19" cy="13" r="1.7"/>
+          <path d="M12 20c-3.4 0-6-2.2-6-5 0-2 1.8-3.5 4-3.5 1 0 1.5.3 2 .7.5-.4 1-.7 2-.7 2.2 0 4 1.5 4 3.5 0 2.8-2.6 5-6 5z"/>
+        </svg>
+      </span>
+      <span class="brand-name">Pet Care Companion<span>Everyday wellness</span></span>
+    </div>
+    <p class="ftr-brand-p">A premium educational pet care platform for dog and cat owners across the United States. Practical guidance for every stage of your pet's life.</p>
+
+    <div class="ftr-links">
+      <div class="ftr-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#dog-care">Dog Care</a></li>
+          <li><a href="#cat-care">Cat Care</a></li>
+          <li><a href="#food">Food Safety</a></li>
+          <li><a href="#guides">Pet Guides</a></li>
+        </ul>
+      </div>
+      <div class="ftr-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#trust">About Us</a></li>
+          <li><a href="#trust">Contact</a></li>
+          <li><a href="#trust">Privacy Policy</a></li>
+          <li><a href="#trust">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="ftr-disc">
+      <strong>Veterinary Disclaimer:</strong> The content on this website is for informational and educational purposes only. It is not intended to be a substitute for professional veterinary advice, diagnosis, or treatment. Always seek the advice of your veterinarian with any questions regarding your pet's health. If you think your pet may have a medical emergency, call your veterinarian or an emergency veterinary clinic immediately. Reference to specific foods, products, or breeds does not constitute an endorsement.
+    </p>
+
+    <div class="ftr-bottom">
+      <span>&copy; <span id="year"></span> Pet Care Companion. All rights reserved.</span>
+      <span>Made for responsible pet owners in the USA.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Sticky header shadow */
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', function(){
+    hdr.classList.toggle('scrolled', window.scrollY > 8);
+  }, {passive:true});
+
+  /* Mobile nav */
+  var burger = document.getElementById('burger');
+  var mnav = document.getElementById('mnav');
+
+  function closeNav(){
+    mnav.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','Open menu');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', function(){
+    var open = !mnav.classList.contains('open');
+    if (open){
+      mnav.classList.add('open');
+      burger.setAttribute('aria-expanded','true');
+      burger.setAttribute('aria-label','Close menu');
+      document.body.style.overflow = 'hidden';
+    } else {
+      closeNav();
+    }
+  });
+
+  mnav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeNav);
+  });
+
+  /* Food safety tabs */
+  var tabs = document.querySelectorAll('.food-tab');
+  var panels = document.querySelectorAll('.food-panel');
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = this.getAttribute('data-panel');
+      tabs.forEach(function(t){
+        t.classList.remove('active');
+        t.setAttribute('aria-selected','false');
+      });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      this.classList.add('active');
+      this.setAttribute('aria-selected','true');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  /* Knowledge library */
+  var guidesData = [
+    {
+      title:'What Should My Dog Eat?',
+      cat:'nutrition',
+      catLabel:'Nutrition',
+      intro:'Balanced feeding, portion control, and life-stage nutrition for dogs.',
+      img:'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=80',
+      alt:'Dog eating from a bowl'
+    },
+    {
+      title:'What Should My Cat Eat?',
+      cat:'nutrition',
+      catLabel:'Nutrition',
+      intro:'Obligate carnivore needs, wet vs dry food, and choosing a complete diet.',
+      img:'https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&w=600&q=80',
+      alt:'Cat eating'
+    },
+    {
+      title:'Foods Pets Must Avoid',
+      cat:'nutrition',
+      catLabel:'Food Safety',
+      intro:'Chocolate, grapes, xylitol, onions — know the dangerous foods.',
+      img:'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=600&q=80',
+      alt:'Assorted foods on a table'
+    },
+    {
+      title:'How to Choose Quality Pet Food',
+      cat:'nutrition',
+      catLabel:'Nutrition',
+      intro:'Reading labels, complete and balanced diets, and questions to ask.',
+      img:'https://images.unsplash.com/photo-1585846888147-3fe14c130048?auto=format&fit=crop&w=600&q=80',
+      alt:'Pet food packaging'
+    },
+    {
+      title:'How to Care for a New Puppy',
+      cat:'puppy-kitten',
+      catLabel:'Puppy Care',
+      intro:'Vaccines, deworming, socialization, potty training, and the first vet visit.',
+      img:'https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a?auto=format&fit=crop&w=600&q=80',
+      alt:'Puppy sitting on grass'
+    },
+    {
+      title:'How to Care for a New Kitten',
+      cat:'puppy-kitten',
+      catLabel:'Kitten Care',
+      intro:'Feeding schedules, litter training, FVRCP vaccines, safe space.',
+      img:'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80',
+      alt:'Kitten looking at camera'
+    },
+    {
+      title:'How Often Should Pets Be Bathed?',
+      cat:'wellness',
+      catLabel:'Grooming',
+      intro:'Bathing frequency depends on coat type, lifestyle, and skin health.',
+      img:'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=80',
+      alt:'Dog being bathed'
+    },
+    {
+      title:'How to Identify Pet Stress',
+      cat:'wellness',
+      catLabel:'Wellness',
+      intro:'Body language, appetite changes, hiding — subtle signs to watch.',
+      img:'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80',
+      alt:'Dog looking concerned'
+    },
+    {
+      title:'How to Keep Indoor Cats Happy',
+      cat:'cat',
+      catLabel:'Cat Care',
+      intro:'Enrichment, vertical space, scratching outlets, and interactive play.',
+      img:'https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=600&q=80',
+      alt:'Cat looking out a window'
+    },
+    {
+      title:'Essential Pet Care Checklist',
+      cat:'wellness',
+      catLabel:'Checklist',
+      intro:'Food, water, vet care, grooming, and safety — all in one place.',
+      img:'https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=600&q=80',
+      alt:'Pet supplies and checklist'
+    }
+  ];
+
+  var grid = document.getElementById('libraryGrid');
+  var search = document.getElementById('guideSearch');
+  var pills = document.querySelectorAll('.filter-pill');
+  var activeFilter = 'all';
+
+  function render(){
+    var q = (search.value || '').toLowerCase().trim();
+    var filtered = guidesData.filter(function(g){
+      if (activeFilter !== 'all' && g.cat !== activeFilter) return false;
+      if (q && !(g.title.toLowerCase().indexOf(q) > -1 ||
+                 g.intro.toLowerCase().indexOf(q) > -1 ||
+                 g.catLabel.toLowerCase().indexOf(q) > -1)) return false;
+      return true;
+    });
+
+    if (filtered.length === 0){
+      grid.innerHTML = '<div class="no-results"><strong>No guides found</strong>Try a different search or filter.</div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(function(g){
+      return '<article class="guide-card">' +
+        '<img class="guide-card-img" src="' + g.img + '" alt="' + g.alt + '" width="600" height="400" loading="lazy">' +
+        '<div class="guide-card-body">' +
+          '<span class="guide-card-cat">' + g.catLabel + '</span>' +
+          '<h4>' + g.title + '</h4>' +
+          '<p>' + g.intro + '</p>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+  }
+
+  render();
+
+  search.addEventListener('input', render);
+
+  pills.forEach(function(pill){
+    pill.addEventListener('click', function(){
+      pills.forEach(function(p){ p.classList.remove('active'); });
+      this.classList.add('active');
+      activeFilter = this.getAttribute('data-filter');
+      render();
+    });
+  });
+
+  /* Reveal on scroll */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:.1, rootMargin:'0px 0px -30px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* Smooth anchor scroll with offset */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      var t = document.querySelector(href);
+      if (!t) return;
+      e.preventDefault();
+      var off = hdr.offsetHeight + 16;
+      var top = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({top: top, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
